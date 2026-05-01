@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Incognito Guard Pricing — Free forever or Pro for $4.99 one-time. No subscriptions."/>
+<title>Incognito Guard — Pricing</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#0a0a0b;--surface:#111113;--card:#16161a;--border:#252529;--border-bright:#3a3a42;--text:#e8e8f0;--muted:#5a5a6e;--red:#ff3e5e;--red-dim:rgba(255,62,94,0.08);--red-border:rgba(255,62,94,0.25);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(10,10,11,0.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-size:20px;font-weight:800;letter-spacing:-0.03em;text-decoration:none;color:var(--text);display:flex;align-items:center;gap:8px;}
+  .nav-logo-icon{width:28px;height:28px;background:var(--red);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;}
+  .nav-logo span{color:var(--red);}
+  .nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+  .nav-links a{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{padding:8px 20px;border-radius:6px;background:var(--red);color:#fff!important;font-weight:700!important;transition:opacity 0.2s!important;}
+  .nav-cta:hover{opacity:0.85;}
+
+  main{position:relative;z-index:1;padding:140px 48px 100px;max-width:1000px;margin:0 auto;text-align:center;}
+  .section-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.3em;color:var(--red);text-transform:uppercase;margin-bottom:16px;}
+  h1{font-size:clamp(36px,6vw,64px);font-weight:800;letter-spacing:-0.04em;line-height:1.1;margin-bottom:16px;}
+  h1 span{color:var(--red);}
+  .sub{font-family:'Space Mono',monospace;font-size:13px;color:var(--muted);line-height:1.8;max-width:480px;margin:0 auto 64px;}
+
+  .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;text-align:left;margin-bottom:80px;}
+
+  .pricing-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px;position:relative;}
+  .pricing-card.pro{border-color:var(--red-border);box-shadow:0 0 0 1px var(--red-border),0 24px 64px rgba(255,62,94,0.07);}
+
+  .pricing-popular{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;}
+
+  .pricing-tier{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;}
+  .pricing-price{font-size:52px;font-weight:800;letter-spacing:-0.03em;margin-bottom:4px;line-height:1;}
+  .pricing-price span{font-size:18px;color:var(--muted);font-weight:400;}
+  .pricing-sub{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:28px;line-height:1.6;}
+
+  .divider{height:1px;background:var(--border);margin:24px 0;}
+
+  .pricing-features{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:32px;}
+  .pricing-features li{font-family:'Space Mono',monospace;font-size:12px;display:flex;align-items:flex-start;gap:10px;line-height:1.5;}
+  .pricing-features li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+  .pricing-features li.muted::before{content:'✕';color:var(--muted);}
+  .pricing-features li.muted{color:var(--muted);}
+
+  .pricing-btn{display:block;width:100%;padding:14px;border-radius:8px;text-align:center;text-decoration:none;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s;}
+  .free-btn{border:1px solid var(--border-bright);color:var(--text);}
+  .free-btn:hover{border-color:var(--red-border);}
+  .pro-btn{background:var(--red);color:#fff;}
+  .pro-btn:hover{opacity:0.85;}
+
+  /* compare table */
+  .compare{margin-bottom:80px;text-align:left;}
+  .compare h2{font-size:24px;font-weight:800;letter-spacing:-0.02em;margin-bottom:32px;text-align:center;}
+  table{width:100%;border-collapse:collapse;}
+  thead th{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--border);text-align:left;}
+  thead th:not(:first-child){text-align:center;}
+  tbody tr:hover{background:rgba(255,255,255,0.015);}
+  tbody td{font-family:'Space Mono',monospace;font-size:12px;padding:14px 16px;border-bottom:1px solid var(--border);color:var(--muted);}
+  tbody td:first-child{color:var(--text);}
+  tbody td:not(:first-child){text-align:center;font-size:16px;}
+  .check{color:var(--red);}
+  .cross{color:var(--muted);opacity:0.4;}
+
+  /* faq */
+  .faq{max-width:680px;margin:0 auto;text-align:left;}
+  .faq h2{font-size:28px;font-weight:800;letter-spacing:-0.03em;margin-bottom:32px;text-align:center;}
+  .faq-item{border-bottom:1px solid var(--border);padding:20px 0;}
+  .faq-q{font-size:15px;font-weight:700;margin-bottom:10px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+  .faq-q::after{content:'↓';font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);transition:transform 0.2s;}
+  .faq-item.open .faq-q::after{transform:rotate(180deg);}
+  .faq-a{font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+  .faq-item.open .faq-a{max-height:200px;}
+
+  footer{border-top:1px solid var(--border);padding:48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;position:relative;z-index:1;}
+  .footer-logo{font-size:18px;font-weight:800;letter-spacing:-0.03em;display:flex;align-items:center;gap:8px;}
+  .footer-logo-icon{width:22px;height:22px;background:var(--red);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;}
+  .footer-logo span{color:var(--red);}
+  .footer-links{display:flex;gap:24px;}
+  .footer-links a{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+  .footer-links a:hover{color:var(--text);}
+  .footer-copy{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);}
+
+  @media(max-width:640px){nav{padding:16px 24px;}.nav-links{display:none;}main{padding:120px 24px 80px;}.pricing-grid{grid-template-columns:1fr;}footer{padding:32px 24px;flex-direction:column;align-items:flex-start;}table{font-size:10px;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">🛡</div>
+    INCOGNITO<span>GUARD</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="ig-pricing.html" style="color:var(--text);">Pricing</a></li>
+    <li><a href="ig-download.html">Download</a></li>
+    <li><a href="ig-contact.html">Contact</a></li>
+    <li><a href="ig-pricing.html" class="nav-cta">Get Pro</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="section-tag">Pricing</div>
+  <h1>Simple.<br/><span>Transparent.</span> Affordable.</h1>
+  <p class="sub">No subscriptions. No hidden fees. Pay once and own Incognito Guard Pro forever — including all future updates.</p>
+
+  <div class="pricing-grid">
+    <!-- Free -->
+    <div class="pricing-card">
+      <div class="pricing-tier">Free</div>
+      <div class="pricing-price">$0 <span>/ forever</span></div>
+      <div class="pricing-sub">Core protection with no cost.<br/>No credit card required.</div>
+      <div class="divider"></div>
+      <ul class="pricing-features">
+        <li>Incognito tab blocking (all browsers)</li>
+        <li>Attempt counter</li>
+        <li>System lockdown after N attempts</li>
+        <li>PIN-protected app (can't be closed)</li>
+        <li>Force-install via OS policy</li>
+        <li class="muted">Email alerts to parent</li>
+        <li class="muted">Full attempt history log</li>
+        <li class="muted">Settings panel</li>
+        <li class="muted">Priority support</li>
+      </ul>
+      <a href="ig-download.html" class="pricing-btn free-btn">Download Free</a>
+    </div>
+
+    <!-- Pro -->
+    <div class="pricing-card pro">
+      <div class="pricing-popular">Most Popular</div>
+      <div class="pricing-tier">Pro</div>
+      <div class="pricing-price">$4.99 <span>/ once</span></div>
+      <div class="pricing-sub">Everything in Free, plus full visibility.<br/>One payment. Yours forever.</div>
+      <div class="divider"></div>
+      <ul class="pricing-features">
+        <li>Everything in Free</li>
+        <li>Instant email alerts on every attempt</li>
+        <li>Full attempt history log (with timestamps)</li>
+        <li>Settings panel — change PIN, email, limits</li>
+        <li>Custom child name & device label in alerts</li>
+        <li>All future features included</li>
+        <li>Priority email support</li>
+      </ul>
+      <a href="#" class="pricing-btn pro-btn" onclick="handlePro(event)">Get Pro — $4.99 →</a>
+    </div>
+  </div>
+
+  <!-- Compare table -->
+  <div class="compare">
+    <h2>Full comparison</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Free</th>
+          <th>Pro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Incognito tab blocking</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Works on Chrome, Edge, Brave, Firefox</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Works on Windows, Linux, macOS</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Attempt counter (session)</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Auto system lock after N attempts</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>PIN-protected (child can't close)</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Force-install (child can't remove)</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Starts automatically with computer</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Instant email alert to parent</td><td class="cross">✕</td><td class="check">✓</td></tr>
+        <tr><td>Full timestamped attempt log</td><td class="cross">✕</td><td class="check">✓</td></tr>
+        <tr><td>Settings panel (PIN, email, limits)</td><td class="cross">✕</td><td class="check">✓</td></tr>
+        <tr><td>Custom child name in alerts</td><td class="cross">✕</td><td class="check">✓</td></tr>
+        <tr><td>All future updates</td><td class="cross">✕</td><td class="check">✓</td></tr>
+        <tr><td>Priority support</td><td class="cross">✕</td><td class="check">✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How do I activate Pro after paying?</div>
+      <div class="faq-a">You'll receive a license key by email immediately after payment. Open the Incognito Guard settings panel, enter the key, and all Pro features unlock instantly.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can my child remove or disable this?</div>
+      <div class="faq-a">No. The desktop app requires a parent PIN to close or modify. The browser extension is force-installed via OS-level policies — the Remove button is grayed out in all browsers.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What email provider does it work with?</div>
+      <div class="faq-a">It works with any SMTP provider. Gmail is the easiest — just create a Gmail App Password (takes 2 minutes) and paste it into Settings. Works with Outlook, Yahoo, and others too.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Does it work if the child uses a different browser?</div>
+      <div class="faq-a">Yes. The installer sets force-install policies for Chrome, Edge, Brave, and Firefox individually. Switching browsers doesn't help — the extension is locked in on all of them.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I use it on multiple devices?</div>
+      <div class="faq-a">Each Pro license covers one device. Contact us at the email on the Contact page if you need multi-device coverage and we'll work something out.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What payment methods are accepted?</div>
+      <div class="faq-a">We accept all major debit/credit cards and PayPal. For Ghana and West Africa, mobile money is also supported via Paystack.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I get a refund?</div>
+      <div class="faq-a">If Incognito Guard doesn't work on your machine, contact us within 7 days with your purchase reference and we'll issue a full refund — no questions asked.</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-icon">🛡</div>
+    INCOGNITO<span>GUARD</span>
+  </div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="ig-download.html">Download</a>
+    <a href="ig-contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 Incognito Guard. Built for parents who care.</div>
+</footer>
+
+<script>
+function toggleFaq(el) {
+  const item = el.parentElement;
+  item.classList.toggle('open');
+}
+function handlePro(e) {
+  e.preventDefault();
+  // Replace this URL with your actual payment link (Paystack, Gumroad, etc.)
+  alert('Payment integration coming soon. Contact us at ig-contact.html to purchase.');
+}
+</script>
+</body>
+</html>
