@@ -220,7 +220,7 @@ async function submitContact() {
 
   try {
     // Replace this URL with your own backend endpoint or Formspree/Netlify Forms URL
-    const res = await fetch('https://YOUR_BACKEND_URL/api/contact', {
+    const res = await fetch('https://ig-server.onrender.com/api/lemonsqueezy/webhook', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, subject, os, message, source: 'incognito-guard', timestamp: new Date().toISOString() })
