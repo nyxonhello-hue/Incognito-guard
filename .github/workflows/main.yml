@@ -1,0 +1,48 @@
+name: Build IncognitoGuard
+
+on:
+  push:
+    branches: [master, main]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pyinstaller
+      - run: pyinstaller --onefile --windowed --add-data "config.json;." --name IncognitoGuard guard.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: IncognitoGuard-Windows
+          path: dist/IncognitoGuard.exe
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pyinstaller && sudo apt-get install -y python3-tk
+      - run: pyinstaller --onefile --windowed --add-data "config.json:." --name IncognitoGuard guard.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: IncognitoGuard-Linux
+          path: dist/IncognitoGuard
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pyinstaller
+      - run: pyinstaller --onefile --windowed --add-data "config.json:." --name IncognitoGuard guard.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: IncognitoGuard-macOS
+          path: dist/IncognitoGuard
