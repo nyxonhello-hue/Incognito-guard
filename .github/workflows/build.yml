@@ -1,0 +1,91 @@
+name: Build IncognitoGuard
+
+on:
+  push:
+    branches: [main]
+  release:
+    types: [created]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pyinstaller
+
+      - name: Build Windows EXE
+        run: |
+          pyinstaller --onefile --windowed `
+            --add-data "config.json;." `
+            --name IncognitoGuard `
+            --icon extension/chromium/icons/icon48.png `
+            guard.py
+
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: IncognitoGuard-Windows
+          path: dist/IncognitoGuard.exe
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pyinstaller
+          sudo apt-get install -y python3-tk
+
+      - name: Build Linux binary
+        run: |
+          pyinstaller --onefile --windowed \
+            --add-data "config.json:." \
+            --name IncognitoGuard \
+            guard.py
+
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: IncognitoGuard-Linux
+          path: dist/IncognitoGuard
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pyinstaller
+
+      - name: Build macOS app
+        run: |
+          pyinstaller --onefile --windowed \
+            --add-data "config.json:." \
+            --name IncognitoGuard \
+            guard.py
+
+      - name: Upload macOS artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: IncognitoGuard-macOS
+          path: dist/IncognitoGuard

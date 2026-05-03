@@ -1,0 +1,42 @@
+2026-05-02 20:32:51 - App closed by parent (PIN verified)
+2026-05-02 20:35:41 - App closed by parent (PIN verified)
+2026-05-03 10:04:11 - App closed by parent (PIN verified)
+2026-05-03 10:13:45 - Incognito attempt #1 (total: 1)
+2026-05-03 10:13:48 - Email send failed: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-48a8fee4d60sm52834605e9.19 - gsmtp')
+2026-05-03 10:13:49 - Incognito attempt #2 (total: 2)
+2026-05-03 10:13:52 - Email send failed: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials ffacd0b85a97d-44a981defa6sm16118322f8f.24 - gsmtp')
+2026-05-03 10:13:54 - Incognito attempt #3 (total: 3)
+2026-05-03 10:13:55 - System lock triggered
+2026-05-03 10:13:57 - Email send failed: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-48a81ed6b89sm249431685e9.1 - gsmtp')
+2026-05-03 10:14:28 - Incognito attempt #4 (total: 4)
+2026-05-03 10:14:30 - System lock triggered
+2026-05-03 10:14:31 - Email send failed: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 5b1f17b1804b1-48a8fef2a67sm72734335e9.5 - gsmtp')
+2026-05-03 10:36:51 - Incognito attempt #5 (total: 5)
+2026-05-03 10:36:51 - Incognito attempt #6 (total: 6)
+2026-05-03 10:36:51 - Incognito attempt #7 (total: 7)
+2026-05-03 10:36:51 - Incognito attempt #8 (total: 8)
+2026-05-03 10:36:53 - System lock triggered
+2026-05-03 10:36:53 - System lock triggered
+2026-05-03 10:36:53 - System lock triggered
+2026-05-03 10:36:56 - Email alert sent for attempt #5
+2026-05-03 10:36:56 - Email alert sent for attempt #8
+2026-05-03 10:36:57 - Email alert sent for attempt #7
+2026-05-03 10:36:57 - Email alert sent for attempt #6
+2026-05-03 16:24:03 - App closed by parent (PIN verified)
+2026-05-03 16:28:19 - Incognito attempt #1 (total: 9)
+2026-05-03 16:28:22 - Incognito attempt #2 (total: 10)
+2026-05-03 16:28:23 - Email alert sent for attempt #1
+2026-05-03 16:28:24 - Incognito attempt #3 (total: 11)
+2026-05-03 16:28:25 - Email alert sent for attempt #2
+2026-05-03 16:28:28 - Email alert sent for attempt #3
+2026-05-03 16:48:26 - Incognito attempt #4 (total: 12)
+2026-05-03 16:48:26 - Incognito attempt #5 (total: 13)
+2026-05-03 16:48:26 - Incognito attempt #6 (total: 14)
+2026-05-03 16:48:26 - Incognito attempt #7 (total: 15)
+2026-05-03 16:48:28 - System lock triggered
+2026-05-03 16:48:28 - System lock triggered
+2026-05-03 16:48:30 - Email alert sent for attempt #5
+2026-05-03 16:48:30 - Email alert sent for attempt #7
+2026-05-03 16:48:30 - Email alert sent for attempt #6
+2026-05-03 16:48:30 - Email alert sent for attempt #4
+2026-05-03 16:50:03 - App closed by parent (PIN verified)
