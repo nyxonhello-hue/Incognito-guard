@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install pyinstaller
+          - run: pip install pyinstaller pillow
 
       - name: Build Windows EXE
         run: |
