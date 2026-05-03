@@ -1,0 +1,8 @@
+build/
+dist/
+*.pyc
+__pycache__/
+*.spec
+.venv/
+state.json
+attempts.log

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Incognito Guard — Block private browsing and get instant email alerts when your child tries to go incognito. Works on all browsers and all devices."/>
+<title>Incognito Guard — Parental Control for Private Browsing</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#0a0a0b;--surface:#111113;--card:#16161a;--border:#252529;--border-bright:#3a3a42;
+    --text:#e8e8f0;--muted:#5a5a6e;--red:#ff3e5e;--red-dim:rgba(255,62,94,0.08);--red-border:rgba(255,62,94,0.25);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
+
+  /* ── NAV ── */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(10,10,11,0.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-size:20px;font-weight:800;letter-spacing:-0.03em;text-decoration:none;color:var(--text);display:flex;align-items:center;gap:8px;}
+  .nav-logo-icon{width:28px;height:28px;background:var(--red);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;}
+  .nav-logo span{color:var(--red);}
+  .nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+  .nav-links a{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{padding:8px 20px;border-radius:6px;background:var(--red);color:#fff!important;font-weight:700!important;transition:opacity 0.2s!important;}
+  .nav-cta:hover{opacity:0.85;}
+
+  /* ── HERO ── */
+  .hero{position:relative;z-index:1;padding:160px 48px 120px;max-width:900px;margin:0 auto;text-align:center;}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--red-dim);border:1px solid var(--red-border);border-radius:100px;padding:6px 16px;font-family:'Space Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.1em;margin-bottom:28px;}
+  .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.4);}}
+  h1{font-size:clamp(40px,7vw,80px);font-weight:800;letter-spacing:-0.04em;line-height:1.05;margin-bottom:24px;}
+  h1 span{color:var(--red);}
+  .hero-sub{font-family:'Space Mono',monospace;font-size:14px;color:var(--muted);line-height:1.9;max-width:520px;margin:0 auto 48px;}
+  .hero-actions{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;}
+  .btn-primary{padding:14px 32px;border-radius:8px;background:var(--red);color:#fff;text-decoration:none;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;transition:opacity 0.2s;}
+  .btn-primary:hover{opacity:0.85;}
+  .btn-secondary{padding:14px 32px;border-radius:8px;border:1px solid var(--border-bright);color:var(--muted);text-decoration:none;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;transition:border-color 0.2s,color 0.2s;}
+  .btn-secondary:hover{border-color:var(--red);color:var(--text);}
+  .hero-note{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);margin-top:20px;}
+
+  /* ── TRUST BAR ── */
+  .trust-bar{position:relative;z-index:1;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 48px;display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap;}
+  .trust-item{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:8px;}
+  .trust-item span{color:var(--text);}
+
+  /* ── SECTIONS ── */
+  section{position:relative;z-index:1;padding:100px 48px;max-width:1080px;margin:0 auto;}
+  .section-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.3em;color:var(--red);text-transform:uppercase;margin-bottom:16px;}
+  .section-title{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-0.03em;margin-bottom:16px;}
+  .section-title span{color:var(--red);}
+  .section-sub{font-family:'Space Mono',monospace;font-size:13px;color:var(--muted);line-height:1.8;max-width:480px;}
+
+  /* ── HOW IT WORKS ── */
+  .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;}
+  .how-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;position:relative;overflow:hidden;transition:border-color 0.2s,transform 0.2s;}
+  .how-card:hover{border-color:var(--border-bright);transform:translateY(-4px);}
+  .how-card::before{content:attr(data-num);position:absolute;top:16px;right:20px;font-family:'Space Mono',monospace;font-size:48px;font-weight:700;color:rgba(255,62,94,0.06);line-height:1;}
+  .how-icon{font-size:28px;margin-bottom:16px;display:block;}
+  .how-title{font-size:17px;font-weight:700;margin-bottom:8px;}
+  .how-desc{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);line-height:1.8;}
+
+  /* ── FEATURES ── */
+  #features{padding-top:100px;}
+  .features-header{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:56px;}
+  .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .feature-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;transition:border-color 0.2s;}
+  .feature-card:hover{border-color:var(--red-border);}
+  .feature-card.highlight{border-color:var(--red-border);background:linear-gradient(135deg,var(--card),rgba(255,62,94,0.04));}
+  .feature-icon{font-size:22px;margin-bottom:14px;display:block;}
+  .feature-title{font-size:15px;font-weight:700;margin-bottom:8px;}
+  .feature-desc{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);line-height:1.8;}
+  .feature-tag{display:inline-block;margin-top:12px;padding:3px 10px;border-radius:100px;background:var(--red-dim);border:1px solid var(--red-border);font-family:'Space Mono',monospace;font-size:9px;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;}
+
+  /* ── BROWSERS ── */
+  .browsers-section{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .browsers-inner{max-width:1080px;margin:0 auto;padding:80px 48px;text-align:center;}
+  .browsers-inner .section-sub{margin:0 auto 48px;}
+  .browser-grid{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;}
+  .browser-item{display:flex;flex-direction:column;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 28px;min-width:110px;transition:border-color 0.2s;}
+  .browser-item:hover{border-color:var(--red-border);}
+  .browser-icon{font-size:32px;}
+  .browser-name{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);}
+  .os-grid{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:24px;}
+  .os-badge{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);border:1px solid var(--border);border-radius:100px;padding:4px 14px;display:flex;align-items:center;gap:6px;}
+
+  /* ── ALERT PREVIEW ── */
+  .alert-section{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .alert-preview{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+  .alert-header{background:#e53935;padding:16px 20px;display:flex;align-items:center;gap:10px;}
+  .alert-header-icon{font-size:18px;}
+  .alert-header-title{font-size:14px;font-weight:700;color:#fff;}
+  .alert-header-sub{font-size:11px;color:rgba(255,255,255,0.7);}
+  .alert-body{padding:20px;}
+  .alert-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-family:'Space Mono',monospace;font-size:11px;}
+  .alert-row:last-child{border-bottom:none;}
+  .alert-row-label{color:var(--muted);}
+  .alert-row-value{color:var(--text);font-weight:700;}
+  .alert-footer{background:var(--surface);padding:12px 20px;font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);text-align:center;}
+
+  /* ── PRICING TEASER ── */
+  .pricing-teaser{text-align:center;padding:100px 48px;}
+  .pricing-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:720px;margin:56px auto 0;text-align:left;}
+  .p-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;}
+  .p-card.pro{border-color:var(--red-border);box-shadow:0 0 0 1px var(--red-border),0 20px 60px rgba(255,62,94,0.06);}
+  .p-card-badge{display:inline-block;background:var(--red);color:#fff;font-family:'Space Mono',monospace;font-size:9px;font-weight:700;padding:3px 10px;border-radius:100px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;}
+  .p-card-tier{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;}
+  .p-card-price{font-size:40px;font-weight:800;letter-spacing:-0.03em;margin-bottom:4px;}
+  .p-card-price span{font-size:14px;color:var(--muted);font-weight:400;}
+  .p-card-sub{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:24px;}
+  .p-card-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+  .p-card-features li{font-family:'Space Mono',monospace;font-size:11px;display:flex;gap:8px;}
+  .p-card-features li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;}
+  .p-card-features li.off::before{content:'✕';color:var(--muted);}
+  .p-card-features li.off{color:var(--muted);}
+  .p-card-btn{display:block;width:100%;padding:12px;border-radius:8px;text-align:center;text-decoration:none;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s;}
+  .p-card-btn.free{border:1px solid var(--border-bright);color:var(--text);}
+  .p-card-btn.free:hover{border-color:var(--red-border);}
+  .p-card-btn.paid{background:var(--red);color:#fff;}
+  .p-card-btn.paid:hover{opacity:0.85;}
+
+  /* ── CTA ── */
+  .cta-section{text-align:center;padding:100px 48px;position:relative;z-index:1;}
+  .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(255,62,94,0.06),transparent);pointer-events:none;}
+  .cta-title{font-size:clamp(32px,5vw,56px);font-weight:800;letter-spacing:-0.04em;margin-bottom:20px;}
+  .cta-title span{color:var(--red);}
+  .cta-sub{font-family:'Space Mono',monospace;font-size:13px;color:var(--muted);line-height:1.8;max-width:420px;margin:0 auto 40px;}
+
+  /* ── FOOTER ── */
+  footer{border-top:1px solid var(--border);padding:48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;position:relative;z-index:1;}
+  .footer-logo{font-size:18px;font-weight:800;letter-spacing:-0.03em;display:flex;align-items:center;gap:8px;}
+  .footer-logo-icon{width:22px;height:22px;background:var(--red);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;}
+  .footer-logo span{color:var(--red);}
+  .footer-links{display:flex;gap:24px;}
+  .footer-links a{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+  .footer-links a:hover{color:var(--text);}
+  .footer-copy{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);}
+
+  @media(max-width:768px){
+    nav{padding:16px 24px;}
+    .nav-links{display:none;}
+    .hero{padding:120px 24px 80px;}
+    section{padding:64px 24px;}
+    .how-grid,.features-grid{grid-template-columns:1fr;}
+    .features-header{grid-template-columns:1fr;}
+    .alert-section{grid-template-columns:1fr;}
+    .pricing-cards{grid-template-columns:1fr;}
+    .trust-bar{padding:20px 24px;gap:24px;}
+    .browsers-inner{padding:60px 24px;}
+    .pricing-teaser{padding:64px 24px;}
+    .cta-section{padding:64px 24px;}
+    footer{padding:32px 24px;flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">🛡</div>
+    INCOGNITO<span>GUARD</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="ig-pricing.html">Pricing</a></li>
+    <li><a href="ig-download.html">Download</a></li>
+    <li><a href="ig-contact.html">Contact</a></li>
+    <li><a href="https://incognitoguard.lemonsqueezy.com/checkout/buy/b7351fda-e079-400f-84c3-180ef346ccd7" class="nav-cta" target="_blank">Get Pro</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">
+    <div class="hero-badge-dot"></div>
+    Parental Control · Private Browsing Protection
+  </div>
+  <h1>Know when your child<br/><span>goes incognito.</span></h1>
+  <p class="hero-sub">
+    Incognito Guard blocks private/incognito tabs the moment they open — on every browser —
+    and sends you an instant email alert. No technical skills needed.
+  </p>
+  <div class="hero-actions">
+    <a href="ig-download.html" class="btn-primary">⬇ Download Free</a>
+    <a href="#features" class="btn-secondary">See how it works →</a>
+  </div>
+  <p class="hero-note">Works on Windows · Linux · macOS &nbsp;|&nbsp; Chrome · Edge · Brave · Firefox</p>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">🛡 <span>Blocks incognito instantly</span></div>
+  <div class="trust-item">📧 <span>Real-time email alerts</span></div>
+  <div class="trust-item">🔒 <span>PIN-protected — tamper proof</span></div>
+  <div class="trust-item">💻 <span>All browsers · all OS</span></div>
+  <div class="trust-item">💰 <span>One-time payment</span></div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div class="section-tag">How it works</div>
+  <div class="section-title">Three steps.<br/><span>Zero technical knowledge.</span></div>
+  <div class="how-grid">
+    <div class="how-card" data-num="01">
+      <span class="how-icon">⬇</span>
+      <div class="how-title">Download & install</div>
+      <div class="how-desc">Run the installer on your child's device. One script sets everything up — extension, policies, autostart — in under two minutes.</div>
+    </div>
+    <div class="how-card" data-num="02">
+      <span class="how-icon">📧</span>
+      <div class="how-title">Enter your email</div>
+      <div class="how-desc">Add your email and set a parent PIN in the Settings panel. Everything else works automatically from that point.</div>
+    </div>
+    <div class="how-card" data-num="03">
+      <span class="how-icon">🔔</span>
+      <div class="how-title">Get alerted instantly</div>
+      <div class="how-desc">The moment an incognito window is attempted, it's closed and you receive an email with the time, device name, and attempt count.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="features-header">
+    <div>
+      <div class="section-tag">Features</div>
+      <div class="section-title">Everything parents<br/><span>actually need.</span></div>
+    </div>
+    <div class="section-sub">No dashboard to learn. No cloud accounts. Just install it and it works — silently, in the background.</div>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card highlight">
+      <span class="feature-icon">⚡</span>
+      <div class="feature-title">Instant tab blocking</div>
+      <div class="feature-desc">Incognito tabs are closed the moment they open — before the child can load any page.</div>
+      <div class="feature-tag">Core</div>
+    </div>
+    <div class="feature-card highlight">
+      <span class="feature-icon">📧</span>
+      <div class="feature-title">Email alerts</div>
+      <div class="feature-desc">Get a formatted HTML email every time an attempt is made, with timestamp, device name, and attempt count.</div>
+      <div class="feature-tag">Pro</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🔒</span>
+      <div class="feature-title">PIN protection</div>
+      <div class="feature-desc">The guard app requires a PIN to open settings or close. Children cannot bypass or disable it.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🖥</span>
+      <div class="feature-title">System lockdown</div>
+      <div class="feature-desc">After a configurable number of attempts, the computer locks automatically — requiring the parent's login to resume.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">📋</span>
+      <div class="feature-title">Attempt log</div>
+      <div class="feature-desc">Every attempt is saved to a local log file with timestamps. View the full history any time from the app.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🚫</span>
+      <div class="feature-title">Force-installed</div>
+      <div class="feature-desc">The browser extension is locked in via OS-level policies. Children cannot remove it from the browser.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🌐</span>
+      <div class="feature-title">All major browsers</div>
+      <div class="feature-desc">Chrome, Edge, Brave, and Firefox — covered. Each browser's extension is separately force-installed.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">💤</span>
+      <div class="feature-title">Runs silently</div>
+      <div class="feature-desc">Starts with the computer automatically. No dock icon, no pop-ups — invisible to the child unless you tell them.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">📶</span>
+      <div class="feature-title">Works offline</div>
+      <div class="feature-desc">Blocking and locking work with no internet. Email alerts send when the connection is restored.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BROWSERS -->
+<div class="browsers-section">
+  <div class="browsers-inner">
+    <div class="section-tag" style="text-align:center;">Compatibility</div>
+    <div class="section-title" style="text-align:center;">Covers every browser<br/><span>your child might use.</span></div>
+    <p class="section-sub" style="text-align:center;margin:0 auto 48px;">Each browser is individually covered via force-install policies. Switching browsers doesn't help.</p>
+    <div class="browser-grid">
+      <div class="browser-item"><span class="browser-icon">🌐</span><span class="browser-name">Chrome</span></div>
+      <div class="browser-item"><span class="browser-icon">🔷</span><span class="browser-name">Edge</span></div>
+      <div class="browser-item"><span class="browser-icon">🦁</span><span class="browser-name">Brave</span></div>
+      <div class="browser-item"><span class="browser-icon">🦊</span><span class="browser-name">Firefox</span></div>
+    </div>
+    <div class="os-grid">
+      <div class="os-badge">🪟 Windows 10 / 11</div>
+      <div class="os-badge">🐧 Linux (Ubuntu, Pop!_OS)</div>
+      <div class="os-badge">🍎 macOS 11+</div>
+    </div>
+  </div>
+</div>
+
+<!-- EMAIL ALERT PREVIEW -->
+<section>
+  <div class="alert-section">
+    <div>
+      <div class="section-tag">Email Alerts</div>
+      <div class="section-title">You'll know the<br/><span>second it happens.</span></div>
+      <p class="section-sub" style="margin-bottom:24px;">An instant, formatted email is sent to your inbox the moment an incognito window is attempted. No app to open, no dashboard to check.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
+        <li style="font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);display:flex;gap:10px;"><span style="color:var(--red);">✓</span>Child's name & device included</li>
+        <li style="font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);display:flex;gap:10px;"><span style="color:var(--red);">✓</span>Exact date and time of attempt</li>
+        <li style="font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);display:flex;gap:10px;"><span style="color:var(--red);">✓</span>Attempt count in current session</li>
+        <li style="font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);display:flex;gap:10px;"><span style="color:var(--red);">✓</span>Works with Gmail and any SMTP provider</li>
+      </ul>
+    </div>
+    <div class="alert-preview">
+      <div class="alert-header">
+        <div class="alert-header-icon">⚠️</div>
+        <div>
+          <div class="alert-header-title">Incognito Attempt Detected — Emma</div>
+          <div class="alert-header-sub">From: Incognito Guard &lt;guard@yourmail.com&gt;</div>
+        </div>
+      </div>
+      <div class="alert-body">
+        <div class="alert-row">
+          <span class="alert-row-label">Child</span>
+          <span class="alert-row-value">Emma</span>
+        </div>
+        <div class="alert-row">
+          <span class="alert-row-label">Time</span>
+          <span class="alert-row-value">May 12, 2025 · 3:47 PM</span>
+        </div>
+        <div class="alert-row">
+          <span class="alert-row-label">Device</span>
+          <span class="alert-row-value">Emma's Laptop</span>
+        </div>
+        <div class="alert-row">
+          <span class="alert-row-label">Attempt</span>
+          <span class="alert-row-value" style="color:var(--red);">#2 this session</span>
+        </div>
+        <div class="alert-row">
+          <span class="alert-row-label">Status</span>
+          <span class="alert-row-value" style="color:#66bb6a;">Tab closed ✓</span>
+        </div>
+      </div>
+      <div class="alert-footer">Sent automatically by Incognito Guard · Tab was closed instantly</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING TEASER -->
+<div class="pricing-teaser">
+  <div class="section-tag" style="display:block;">Pricing</div>
+  <div class="section-title">Simple. <span>One-time.</span> Affordable.</div>
+  <p class="section-sub" style="max-width:420px;margin:0 auto;">No subscriptions. Pay once and own it forever — including all future updates.</p>
+  <div class="pricing-cards">
+    <div class="p-card">
+      <div class="p-card-tier">Free</div>
+      <div class="p-card-price">$0 <span>/ forever</span></div>
+      <div class="p-card-sub">Core protection for every parent.</div>
+      <ul class="p-card-features">
+        <li>Incognito tab blocking</li>
+        <li>Attempt counter</li>
+        <li>System lockdown</li>
+        <li class="off">Email alerts</li>
+        <li class="off">Attempt history log</li>
+        <li class="off">Settings panel</li>
+      </ul>
+      <a href="ig-download.html" class="p-card-btn free">Download Free</a>
+    </div>
+    <div class="p-card pro">
+      <div class="p-card-badge">Most Popular</div>
+      <div class="p-card-tier">Pro</div>
+      <div class="p-card-price">$19.99 <span>/ once</span></div>
+      <div class="p-card-sub">Everything in Free, plus alerts & full control.</div>
+      <ul class="p-card-features">
+        <li>Everything in Free</li>
+        <li>Instant email alerts</li>
+        <li>Full attempt history log</li>
+        <li>Settings panel (PIN-gated)</li>
+        <li>All future updates included</li>
+      </ul>
+      <a href="https://incognitoguard.lemonsqueezy.com/checkout/buy/b7351fda-e079-400f-84c3-180ef346ccd7" class="p-card-btn paid" target="_blank">Get Pro — $19.99 →</a>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="section-tag" style="display:block;">Get started</div>
+  <div class="cta-title">Start protecting your<br/><span>child today.</span></div>
+  <p class="cta-sub">Free to download. Works in minutes. Email alerts that actually reach you.</p>
+  <div class="hero-actions">
+    <a href="ig-download.html" class="btn-primary">⬇ Download Free</a>
+    <a href="ig-pricing.html" class="btn-secondary">View Pricing →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-icon">🛡</div>
+    INCOGNITO<span>GUARD</span>
+  </div>
+  <div class="footer-links">
+    <a href="#features">Features</a>
+    <a href="ig-pricing.html">Pricing</a>
+    <a href="ig-download.html">Download</a>
+    <a href="ig-contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 Incognito Guard. Built for parents who care.</div>
+</footer>
+
+</body>
+</html>
