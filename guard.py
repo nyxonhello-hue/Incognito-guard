@@ -299,8 +299,8 @@ def open_settings():
 # ─────────────────────────────────────────
 root = tk.Tk()
 root.title("Incognito Guard")
-root.geometry("340x360")
-root.resizable(False, False)
+root.geometry("380x420")
+root.resizable(True,True)
 root.configure(bg="#1a1a2e")
 
 # Header
