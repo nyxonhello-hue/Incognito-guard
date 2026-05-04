@@ -251,8 +251,8 @@ def open_settings():
 
     win = tk.Toplevel(root)
     win.title("Settings")
-    win.geometry("380x480")
-    win.resizable(False, False)
+    win.geometry("380x500")
+    win.resizable(True, True)
 
     fields = {}
 
