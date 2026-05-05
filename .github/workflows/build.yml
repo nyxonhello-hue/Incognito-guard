@@ -20,6 +20,8 @@ jobs:
           copy dist\IncognitoGuard.exe release\
           copy config.json release\
           copy install.ps1 release\
+          xcopy extension\chromium release\extension\chromium\ /E /I /Q
+          xcopy extension\firefox release\extension\firefox\ /E /I /Q
       - uses: actions/upload-artifact@v4
         with:
           name: IncognitoGuard-Windows
@@ -40,6 +42,8 @@ jobs:
           cp dist/IncognitoGuard release/
           cp config.json release/
           cp install.sh release/
+          cp -r extension/chromium release/extension/chromium
+          cp -r extension/firefox release/extension/firefox
       - uses: actions/upload-artifact@v4
         with:
           name: IncognitoGuard-Linux
@@ -60,6 +64,8 @@ jobs:
           cp dist/IncognitoGuard release/
           cp config.json release/
           cp install.sh release/
+          cp -r extension/chromium release/extension/chromium
+          cp -r extension/firefox release/extension/firefox
       - uses: actions/upload-artifact@v4
         with:
           name: IncognitoGuard-macOS
