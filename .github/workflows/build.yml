@@ -38,7 +38,7 @@ jobs:
       - run: pyinstaller --onefile --windowed --add-data "config.json:." --name IncognitoGuard guard.py
       - name: Package
         run: |
-          mkdir release
+          mkdir -p release/extension
           cp dist/IncognitoGuard release/
           cp config.json release/
           cp install.sh release/
@@ -60,7 +60,7 @@ jobs:
       - run: pyinstaller --onefile --windowed --add-data "config.json:." --name IncognitoGuard guard.py
       - name: Package
         run: |
-          mkdir release
+          mkdir -p release/extension
           cp dist/IncognitoGuard release/
           cp config.json release/
           cp install.sh release/
