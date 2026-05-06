@@ -251,8 +251,8 @@ def open_settings():
 
     win = tk.Toplevel(root)
     win.title("Settings")
-    win.geometry("380x500")
-    win.resizable(True, True)
+    win.geometry("380x480")
+    win.resizable(False, False)
 
     fields = {}
 
@@ -297,12 +297,73 @@ def open_settings():
 # ─────────────────────────────────────────
 #  UI
 # ─────────────────────────────────────────
+#  TRAY + UI
+# ─────────────────────────────────────────
 root = tk.Tk()
 root.title("Incognito Guard")
-root.geometry("380x420")
-root.resizable(True,True)
+root.geometry("340x380")
+root.resizable(False, False)
 root.configure(bg="#1a1a2e")
 
+# ── Hide to tray on startup ──────────────
+root.withdraw()  # start hidden
+
+def show_window():
+    root.deiconify()
+    root.lift()
+    root.focus_force()
+
+def hide_window():
+    root.withdraw()
+
+def quit_app():
+    if prompt_pin("quit Incognito Guard"):
+        logging.info("App quit by parent (PIN verified)")
+        if tray_icon:
+            tray_icon.stop()
+        root.destroy()
+    else:
+        messagebox.showerror("Access Denied", "Incorrect PIN.")
+
+# ── System tray icon ─────────────────────
+tray_icon = None
+
+def setup_tray():
+    global tray_icon
+    try:
+        import pystray
+        from PIL import Image as PILImage
+
+        # Load or create tray icon image
+        try:
+            img = PILImage.open(resource_path("icon48.png")).resize((64, 64))
+        except Exception:
+            # Fallback: draw a red square
+            img = PILImage.new("RGB", (64, 64), color=(255, 62, 94))
+
+        menu = pystray.Menu(
+            pystray.MenuItem("Open Incognito Guard", lambda: root.after(0, show_window), default=True),
+            pystray.MenuItem("Settings", lambda: root.after(0, open_settings)),
+            pystray.Menu.SEPARATOR,
+            pystray.MenuItem("Quit (PIN required)", lambda: root.after(0, quit_app)),
+        )
+
+        tray_icon = pystray.Icon(
+            "IncognitoGuard",
+            img,
+            "Incognito Guard — Monitoring",
+            menu
+        )
+
+        threading.Thread(target=tray_icon.run, daemon=True).start()
+
+    except ImportError:
+        # pystray not installed — fall back to showing the window
+        root.deiconify()
+
+setup_tray()
+
+# ── Build UI (shown when user opens from tray) ──
 # Header
 header = tk.Frame(root, bg="#e53935", pady=12)
 header.pack(fill="x")
@@ -340,19 +401,22 @@ email_status = "📧 Email alerts ON" if config["email_alerts"] else "📧 Email
 tk.Label(body, text=email_status, font=("Arial", 9),
          bg="#1a1a2e", fg="#90caf9").pack(pady=4)
 
-# Footer buttons
+# Footer
 footer = tk.Frame(root, bg="#1a1a2e", pady=8)
 footer.pack(fill="x")
 tk.Button(footer, text="⚙ Settings", command=open_settings,
           bg="#37474f", fg="white", relief="flat", padx=12, pady=5).pack(side="left", padx=12)
-tk.Button(footer, text="📄 View Log", command=lambda: os.startfile(LOG_FILE)
-          if platform.system() == "Windows" else os.system(f"xdg-open {LOG_FILE}"),
+tk.Button(footer, text="📄 View Log",
+          command=lambda: os.startfile(LOG_FILE) if platform.system() == "Windows"
+          else os.system(f"xdg-open {LOG_FILE}"),
           bg="#37474f", fg="white", relief="flat", padx=12, pady=5).pack(side="left")
+tk.Button(footer, text="Hide to Tray", command=hide_window,
+          bg="#37474f", fg="white", relief="flat", padx=12, pady=5).pack(side="right", padx=12)
 
-# PIN-lock close
-root.protocol("WM_DELETE_WINDOW", on_close)
+# Closing window hides to tray instead of quitting
+root.protocol("WM_DELETE_WINDOW", hide_window)
 
-# Start server thread
+# Start HTTP server
 threading.Thread(target=start_server, daemon=True).start()
 
 root.mainloop()
