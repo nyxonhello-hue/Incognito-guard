@@ -38,12 +38,13 @@ jobs:
       - run: pyinstaller --onefile --windowed --add-data "config.json:." --name IncognitoGuard guard.py
       - name: Package
         run: |
-          mkdir release
+          mkdir -p release/extension/chromium
+          mkdir -p release/extension/firefox
           cp dist/IncognitoGuard release/
           cp config.json release/
           cp install.sh release/
-          cp -r extension/chromium release/extension/chromium
-          cp -r extension/firefox release/extension/firefox
+          cp -r extension/chromium/. release/extension/chromium/
+          cp -r extension/firefox/. release/extension/firefox/
       - uses: actions/upload-artifact@v4
         with:
           name: IncognitoGuard-Linux
@@ -60,12 +61,13 @@ jobs:
       - run: pyinstaller --onefile --windowed --add-data "config.json:." --name IncognitoGuard guard.py
       - name: Package
         run: |
-          mkdir release
+          mkdir -p release/extension/chromium
+          mkdir -p release/extension/firefox
           cp dist/IncognitoGuard release/
           cp config.json release/
           cp install.sh release/
-          cp -r extension/chromium release/extension/chromium
-          cp -r extension/firefox release/extension/firefox
+          cp -r extension/chromium/. release/extension/chromium/
+          cp -r extension/firefox/. release/extension/firefox/
       - uses: actions/upload-artifact@v4
         with:
           name: IncognitoGuard-macOS
