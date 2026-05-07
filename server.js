@@ -16,9 +16,9 @@ const LS_WEBHOOK_SECRET = process.env.LS_WEBHOOK_SECRET || '';
 
 // Pro download links (update these when you publish new releases)
 const PRO_DOWNLOADS = {
-  windows: 'https://github.com/nyxonhello-hue/Incognito-guard/releases/latest/download/IncognitoGuard-Pro-Windows.zip',
-  linux:   'https://github.com/nyxonhello-hue/Incognito-guard/releases/latest/download/IncognitoGuard-Pro-Linux.zip',
-  macos:   'https://github.com/nyxonhello-hue/Incognito-guard/releases/latest/download/IncognitoGuard-Pro-macOS.zip',
+  windows: 'https://incognito-guard.vercel.app/ig-pro-download.html',
+  linux:   'https://incognito-guard.vercel.app/ig-pro-download.html',
+  macos:   'https://incognito-guard.vercel.app/ig-pro-download.html',
 };
 
 // ── Data files ────────────────────────────────────────────────────────────────
@@ -182,35 +182,17 @@ app.post('/api/lemonsqueezy/webhook', async (req, res) => {
             Your Pro download is ready. Choose your operating system:
           </p>
 
-          <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
-            <tr>
-              <td style="padding:12px;background:#fff;border:1px solid #eee;border-radius:8px 8px 0 0;">
-                <strong>🪟 Windows</strong><br/>
-                <a href="${PRO_DOWNLOADS.windows}"
-                   style="color:#ff3e5e;font-weight:bold;font-size:14px;">
-                  ⬇ Download Incognito Guard Pro (Windows)
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td style="padding:12px;background:#fafafa;border:1px solid #eee;">
-                <strong>🐧 Linux</strong><br/>
-                <a href="${PRO_DOWNLOADS.linux}"
-                   style="color:#ff3e5e;font-weight:bold;font-size:14px;">
-                  ⬇ Download Incognito Guard Pro (Linux)
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td style="padding:12px;background:#fff;border:1px solid #eee;border-radius:0 0 8px 8px;">
-                <strong>🍎 macOS</strong><br/>
-                <a href="${PRO_DOWNLOADS.macos}"
-                   style="color:#ff3e5e;font-weight:bold;font-size:14px;">
-                  ⬇ Download Incognito Guard Pro (macOS)
-                </a>
-              </td>
-            </tr>
-          </table>
+          <div style="text-align:center;margin-bottom:24px;">
+            <a href="https://incognito-guard.vercel.app/ig-pro-download.html"
+               style="display:inline-block;background:#ff3e5e;color:#fff;
+               font-family:monospace;font-size:16px;font-weight:bold;
+               padding:16px 40px;border-radius:8px;text-decoration:none;">
+              ⬇ Download Incognito Guard Pro
+            </a>
+            <p style="margin-top:8px;font-size:12px;color:#999;">
+              Windows · Linux · macOS — all included
+            </p>
+          </div>
 
           <div style="background:#fff8f8;border:1px solid #ffcdd2;border-radius:8px;padding:16px;margin-bottom:20px;">
             <p style="margin:0;font-size:13px;color:#555;">
