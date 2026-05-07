@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Download Incognito Guard Pro"/>
+<title>Incognito Guard Pro — Your Download</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#0a0a0b;--surface:#111113;--card:#16161a;--border:#252529;--border-bright:#3a3a42;--text:#e8e8f0;--muted:#5a5a6e;--red:#ff3e5e;--red-dim:rgba(255,62,94,0.08);--red-border:rgba(255,62,94,0.25);--green:#00e5a0;--blue:#38b6ff;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(10,10,11,0.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-size:20px;font-weight:800;letter-spacing:-0.03em;text-decoration:none;color:var(--text);display:flex;align-items:center;gap:8px;}
+  .nav-logo-icon{width:28px;height:28px;background:var(--red);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;}
+  .nav-logo span{color:var(--red);}
+
+  main{position:relative;z-index:1;padding:140px 48px 100px;max-width:800px;margin:0 auto;text-align:center;}
+
+  .pro-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,200,0,0.1);border:1px solid rgba(255,200,0,0.3);border-radius:100px;padding:6px 16px;font-family:'Space Mono',monospace;font-size:11px;color:#f9ca24;letter-spacing:0.1em;margin-bottom:24px;}
+
+  h1{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-0.04em;line-height:1.1;margin-bottom:16px;}
+  h1 span{color:var(--red);}
+  .sub{font-family:'Space Mono',monospace;font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:48px;}
+
+  .download-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px;}
+  .dl-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;text-align:center;transition:border-color 0.2s,transform 0.2s;}
+  .dl-card:hover{border-color:var(--red-border);transform:translateY(-2px);}
+  .dl-card.windows{border-top:2px solid var(--blue);}
+  .dl-card.linux{border-top:2px solid var(--green);}
+  .dl-card.mac{border-top:2px solid var(--red);}
+  .dl-icon{font-size:32px;margin-bottom:12px;display:block;}
+  .dl-name{font-size:16px;font-weight:800;margin-bottom:4px;}
+  .dl-sub{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:16px;line-height:1.6;}
+  .dl-btn{display:block;width:100%;padding:10px;border-radius:8px;text-decoration:none;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;transition:opacity 0.2s;}
+  .dl-btn:hover{opacity:0.85;}
+  .btn-blue{background:var(--blue);color:#000;}
+  .btn-green{background:var(--green);color:#000;}
+  .btn-red{background:var(--red);color:#fff;}
+
+  .setup-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;text-align:left;margin-bottom:32px;}
+  .setup-box h3{font-size:18px;font-weight:800;margin-bottom:20px;}
+  .setup-steps{display:flex;flex-direction:column;gap:16px;}
+  .setup-step{display:flex;gap:14px;align-items:flex-start;}
+  .setup-num{width:28px;height:28px;border-radius:6px;background:var(--red-dim);border:1px solid var(--red-border);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--red);flex-shrink:0;}
+  .setup-text{font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);line-height:1.8;}
+  .setup-text strong{color:var(--text);}
+  code{color:var(--red);font-family:'Space Mono',monospace;}
+
+  .support-box{background:var(--red-dim);border:1px solid var(--red-border);border-radius:12px;padding:20px;font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);text-align:center;}
+  .support-box a{color:var(--red);text-decoration:none;}
+  .support-box a:hover{text-decoration:underline;}
+
+  footer{border-top:1px solid var(--border);padding:48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;position:relative;z-index:1;}
+  .footer-logo{font-size:18px;font-weight:800;letter-spacing:-0.03em;display:flex;align-items:center;gap:8px;}
+  .footer-logo-icon{width:22px;height:22px;background:var(--red);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;}
+  .footer-logo span{color:var(--red);}
+  .footer-copy{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);}
+
+  @media(max-width:640px){
+    nav{padding:16px 24px;}
+    main{padding:120px 24px 80px;}
+    .download-grid{grid-template-columns:1fr;}
+    footer{padding:32px 24px;flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">🛡</div>
+    INCOGNITO<span>GUARD</span>
+  </a>
+</nav>
+
+<main>
+  <div class="pro-badge">⭐ Pro Version — Thank you for your purchase!</div>
+  <h1>Your <span>Pro download</span><br/>is ready.</h1>
+  <p class="sub">Choose your operating system below. All 3 platforms are included with your purchase.</p>
+
+  <div class="download-grid">
+    <div class="dl-card windows">
+      <span class="dl-icon">🪟</span>
+      <div class="dl-name">Windows</div>
+      <div class="dl-sub">Windows 10 / 11<br/>64-bit</div>
+      <a href="https://github.com/nyxonhello-hue/Incognito-guard/releases/latest/download/IncognitoGuard-Pro-Windows.zip" class="dl-btn btn-blue">⬇ Download for Windows</a>
+    </div>
+    <div class="dl-card linux">
+      <span class="dl-icon">🐧</span>
+      <div class="dl-name">Linux</div>
+      <div class="dl-sub">Ubuntu, Pop!_OS<br/>Debian and others</div>
+      <a href="https://github.com/nyxonhello-hue/Incognito-guard/releases/latest/download/IncognitoGuard-Pro-Linux.zip" class="dl-btn btn-green">⬇ Download for Linux</a>
+    </div>
+    <div class="dl-card mac">
+      <span class="dl-icon">🍎</span>
+      <div class="dl-name">macOS</div>
+      <div class="dl-sub">macOS 11 Big Sur+<br/>Intel + Apple Silicon</div>
+      <a href="https://github.com/nyxonhello-hue/Incognito-guard/releases/latest/download/IncognitoGuard-Pro-macOS.zip" class="dl-btn btn-red">⬇ Download for macOS</a>
+    </div>
+  </div>
+
+  <div class="setup-box">
+    <h3>🚀 Quick Setup Guide</h3>
+    <div class="setup-steps">
+      <div class="setup-step">
+        <div class="setup-num">1</div>
+        <div class="setup-text"><strong>Extract the zip</strong> to your Desktop or any folder.</div>
+      </div>
+      <div class="setup-step">
+        <div class="setup-num">2</div>
+        <div class="setup-text"><strong>Open config.json</strong> in Notepad (Windows) or any text editor. Fill in your email address, Gmail App Password, child's name, and device name.</div>
+      </div>
+      <div class="setup-step">
+        <div class="setup-num">3</div>
+        <div class="setup-text">
+          <strong>Run the installer:</strong><br/>
+          Windows: Right-click <code>install.ps1</code> → Run with PowerShell as Administrator<br/>
+          Linux/macOS: Open terminal → <code>sudo bash install.sh YOUR_EXTENSION_ID</code>
+        </div>
+      </div>
+      <div class="setup-step">
+        <div class="setup-num">4</div>
+        <div class="setup-text"><strong>Load the browser extension:</strong> Open <code>chrome://extensions</code> → Developer Mode → Load Unpacked → select the <code>extension/chromium</code> folder → click Details → turn on Allow in Incognito.</div>
+      </div>
+      <div class="setup-step">
+        <div class="setup-num">5</div>
+        <div class="setup-text"><strong>Launch IncognitoGuard-Pro</strong> and open Settings to verify your email. Test by opening an incognito tab — it should close instantly and you should receive an email alert.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="support-box">
+    Need help with setup? Contact us at <a href="ig-contact.html">incognito-guard.vercel.app/ig-contact.html</a> — we'll walk you through it.
+  </div>
+</main>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-icon">🛡</div>
+    INCOGNITO<span>GUARD</span>
+  </div>
+  <div class="footer-copy">© 2026 Incognito Guard. Built for parents who care.</div>
+</footer>
+
+</body>
+</html>
