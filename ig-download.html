@@ -7,12 +7,12 @@
 <title>Incognito Guard — Download</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
 <style>
-  :root{--bg:#0a0a0b;--surface:#111113;--card:#16161a;--border:#252529;--border-bright:#3a3a42;--text:#e8e8f0;--muted:#5a5a6e;--red:#ff3e5e;--red-dim:rgba(255,62,94,0.08);--red-border:rgba(255,62,94,0.25);--green:#00e5a0;--blue:#38b6ff;}
+  :root{--bg:#0a0a0b;--surface:#111113;--card:#16161a;--border:#252529;--border-bright:#3a3a42;--text:#e8e8f0;--muted:#5a5a6e;--red:#ff3e5e;--red-dim:rgba(255,62,94,0.08);--red-border:rgba(255,62,94,0[...]
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px);backgr[...]
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(10,10,11,0.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(10,10,11,0.88);backdrop-filter:blur(12px);border-b[...]
   .nav-logo{font-size:20px;font-weight:800;letter-spacing:-0.03em;text-decoration:none;color:var(--text);display:flex;align-items:center;gap:8px;}
   .nav-logo-icon{width:28px;height:28px;background:var(--red);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;}
   .nav-logo span{color:var(--red);}
@@ -30,7 +30,7 @@
 
   /* ── Tier toggle ── */
   .tier-toggle{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:48px;}
-  .tier-btn{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:12px 32px;border:1px solid var(--border);cursor:pointer;transition:all 0.2s;letter-spacing:0.1em;text-transform:uppercase;}
+  .tier-btn{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:12px 32px;border:1px solid var(--border);cursor:pointer;transition:all 0.2s;letter-spacing:0.1em;text-transform:up[...]
   .tier-btn:first-child{border-radius:8px 0 0 8px;}
   .tier-btn:last-child{border-radius:0 8px 8px 0;}
   .tier-btn.active-free{background:var(--green);color:#000;border-color:var(--green);}
@@ -51,7 +51,7 @@
   .platform-icon{font-size:36px;margin-bottom:16px;display:block;}
   .platform-name{font-size:20px;font-weight:800;letter-spacing:-0.02em;margin-bottom:6px;}
   .platform-sub{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:24px;line-height:1.6;}
-  .download-btn{display:block;width:100%;padding:12px;border-radius:8px;text-align:center;text-decoration:none;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s;margin-bottom:10px;}
+  .download-btn{display:block;width:100%;padding:12px;border-radius:8px;text-align:center;text-decoration:none;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.1em;te[...]
   .btn-blue{background:var(--blue);color:#000;}
   .btn-blue:hover{opacity:0.85;}
   .btn-green{background:var(--green);color:#000;}
@@ -67,7 +67,7 @@
   .pro-banner h2{font-size:28px;font-weight:800;letter-spacing:-0.02em;margin-bottom:12px;}
   .pro-banner h2 span{color:var(--red);}
   .pro-banner p{font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);line-height:1.8;margin-bottom:24px;}
-  .pro-banner-btn{display:inline-block;padding:14px 40px;border-radius:8px;background:var(--red);color:#fff;text-decoration:none;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;transition:opacity 0.2s;}
+  .pro-banner-btn{display:inline-block;padding:14px 40px;border-radius:8px;background:var(--red);color:#fff;text-decoration:none;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;lette[...]
   .pro-banner-btn:hover{opacity:0.85;}
   .pro-banner-note{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);margin-top:12px;}
 
@@ -85,7 +85,7 @@
   .steps-box h3{font-size:18px;font-weight:800;margin-bottom:24px;}
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
   .step{display:flex;gap:14px;}
-  .step-num{width:30px;height:30px;border-radius:8px;background:var(--red-dim);border:1px solid var(--red-border);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:var(--red);flex-shrink:0;}
+  .step-num{width:30px;height:30px;border-radius:8px;background:var(--red-dim);border:1px solid var(--red-border);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monosp[...]
   .step-title{font-size:14px;font-weight:700;margin-bottom:6px;}
   .step-desc{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);line-height:1.7;}
 
