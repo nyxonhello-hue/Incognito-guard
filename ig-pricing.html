@@ -7,13 +7,13 @@
 <title>Incognito Guard — Pricing</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
 <style>
-  :root{--bg:#0a0a0b;--surface:#111113;--card:#16161a;--border:#252529;--border-bright:#3a3a42;--text:#e8e8f0;--muted:#5a5a6e;--red:#ff3e5e;--red-dim:rgba(255,62,94,0.08);--red-border:rgba(255,62,94,0.25);}
+  :root{--bg:#0a0a0b;--surface:#111113;--card:#16161a;--border:#252529;--border-bright:#3a3a42;--text:#e8e8f0;--muted:#5a5a6e;--red:#ff3e5e;--red-dim:rgba(255,62,94,0.08);--red-border:rgba(255,62,[...]
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px);ba[...]
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(10,10,11,0.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(10,10,11,0.88);backdrop-filter:blur(12px);bord[...]
   .nav-logo{font-size:20px;font-weight:800;letter-spacing:-0.03em;text-decoration:none;color:var(--text);display:flex;align-items:center;gap:8px;}
   .nav-logo-icon{width:28px;height:28px;background:var(--red);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;}
   .nav-logo span{color:var(--red);}
@@ -34,7 +34,7 @@
   .pricing-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px;position:relative;}
   .pricing-card.pro{border-color:var(--red-border);box-shadow:0 0 0 1px var(--red-border),0 24px 64px rgba(255,62,94,0.07);}
 
-  .pricing-popular{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;}
+  .pricing-popular{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:4px 14[...]
 
   .pricing-tier{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;}
   .pricing-price{font-size:52px;font-weight:800;letter-spacing:-0.03em;margin-bottom:4px;line-height:1;}
@@ -49,7 +49,7 @@
   .pricing-features li.muted::before{content:'✕';color:var(--muted);}
   .pricing-features li.muted{color:var(--muted);}
 
-  .pricing-btn{display:block;width:100%;padding:14px;border-radius:8px;text-align:center;text-decoration:none;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s;}
+  .pricing-btn{display:block;width:100%;padding:14px;border-radius:8px;text-align:center;text-decoration:none;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.1em[...]
   .free-btn{border:1px solid var(--border-bright);color:var(--text);}
   .free-btn:hover{border-color:var(--red-border);}
   .pro-btn{background:var(--red);color:#fff;}
@@ -59,7 +59,7 @@
   .compare{margin-bottom:80px;text-align:left;}
   .compare h2{font-size:24px;font-weight:800;letter-spacing:-0.02em;margin-bottom:32px;text-align:center;}
   table{width:100%;border-collapse:collapse;}
-  thead th{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--border);text-align:left;}
+  thead th{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--border);text-align:lef[...]
   thead th:not(:first-child){text-align:center;}
   tbody tr:hover{background:rgba(255,255,255,0.015);}
   tbody td{font-family:'Space Mono',monospace;font-size:12px;padding:14px 16px;border-bottom:1px solid var(--border);color:var(--muted);}
@@ -87,7 +87,7 @@
   .footer-links a:hover{color:var(--text);}
   .footer-copy{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);}
 
-  @media(max-width:640px){nav{padding:16px 24px;}.nav-links{display:none;}main{padding:120px 24px 80px;}.pricing-grid{grid-template-columns:1fr;}footer{padding:32px 24px;flex-direction:column;align-items:flex-start;}table{font-size:10px;}}
+  @media(max-width:640px){nav{padding:16px 24px;}.nav-links{display:none;}main{padding:120px 24px 80px;}.pricing-grid{grid-template-columns:1fr;}footer{padding:32px 24px;flex-direction:column;alig[...]
 </style>
 </head>
 <body>
@@ -192,15 +192,15 @@
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">Can my child remove or disable this?</div>
-      <div class="faq-a">No. The desktop app requires a parent PIN to close or modify. The browser extension is force-installed via OS-level policies — the Remove button is grayed out in all browsers.</div>
+      <div class="faq-a">No. The desktop app requires a parent PIN to close or modify. The browser extension is force-installed via OS-level policies — the Remove button is grayed out in all br[...]
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">What email provider does it work with?</div>
-      <div class="faq-a">It works with any SMTP provider. Gmail is the easiest — just create a Gmail App Password (takes 2 minutes) and paste it into Settings. Works with Outlook, Yahoo, and others too.</div>
+      <div class="faq-a">It works with any SMTP provider. Gmail is the easiest — just create a Gmail App Password (takes 2 minutes) and paste it into Settings. Works with Outlook, Yahoo, and ot[...]
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">Does it work if the child uses a different browser?</div>
-      <div class="faq-a">Yes. The installer sets force-install policies for Chrome, Edge, Brave, and Firefox individually. Switching browsers doesn't help — the extension is locked in on all of them.</div>
+      <div class="faq-a">Yes. The installer sets force-install policies for Chrome, Edge, Brave, and Firefox individually. Switching browsers doesn't help — the extension is locked in on all of[...]
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">Can I use it on multiple devices?</div>
