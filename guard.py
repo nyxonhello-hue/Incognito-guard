@@ -251,8 +251,8 @@ def open_settings():
 
     win = tk.Toplevel(root)
     win.title("Settings")
-    win.geometry("380x480")
-    win.resizable(False, False)
+    win.geometry("380x500")
+    win.resizable(True, True)
 
     fields = {}
 
@@ -302,7 +302,7 @@ def open_settings():
 root = tk.Tk()
 root.title("Incognito Guard")
 root.geometry("340x380")
-root.resizable(False, False)
+root.resizable(True, True)
 root.configure(bg="#1a1a2e")
 
 # ── Hide to tray on startup ──────────────
